@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Songs</title>
+	<style type="text/css">
+		body{margin:0;background: #222;}
+		.header{
+			height: 12vh;
+			width: 100%;
+			background-color: #ff8c00;
+		}
+		div{display: block}
+
+		.img-responsive{width: 100%;}
+		.container{height: 81vh;width: 80%;padding:1vh 10%;}
+		.footer{height: 5vh;width: 100%;background-color: #ff8c00;}
+		.row{width: 100%;padding: 10px 20px;margin-bottom: 5px;display: table;}
+		.row:after,.row:before{box-sizing: border-box;}
+		.col-6{width: 50%;}
+		.col-3{width: 25%}
+		.col-9{width: 75%}
+		.col-6,.col-3,.col-9{float: left;position: relative;display: table-cell;}
+		.controls{margin-top: 30px;}
+		.bg-white{background-color:#fff; }
+		.head-img{margin-top: 10px;}
+		#play,#pause,#stop{height:50px;width:50px;background-color: #333;border-radius: 50%;}
+		#image-disk{margin-top: 20px;}
+		.image-disk {
+			
+		    -webkit-animation:spin 4s linear infinite;
+		    -moz-animation:spin 4s linear infinite;
+		    animation:spin 4s linear infinite;
+		}
+		@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+		@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+		@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+	</style>
+	<script>
+		var player;
+		var element;
+		function playMusic(id)
+		{
+			player= document.getElementById(id);
+			player.play();
+			element = document.getElementById("image-disk");
+		   	element.classList.add("image-disk");
+		}
+		function pauseMusic()
+		{
+			player.pause();
+			element = document.getElementById("image-disk");
+		   	element.classList.remove("image-disk");
+		}
+		function stopMusic()
+		{
+			player.pause();
+			player.currentTime = 0;
+			element = document.getElementById("image-disk");
+		   	element.classList.remove("image-disk");
+		}
+	</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header" align="center">
+			<span>Music</span><img class="head-img" src="images/disk.png" height="50vh"><span>Player</span>
+		</div>
+		<div class="container">
+			<div class="">
+				<div class="col-6">
+					<div class="row bg-white" onclick="playMusic('player1')">
+						<div class="col-3">
+							<img class="img-responsive" src="images/tap_nation.jpg">
+						</div>
+						<div class="col-9">
+							<h3>F.R.I.E.N.D.S - </h3>
+						</div>
+					</div>
+					<div class="row bg-white" onclick="playMusic('player2')">
+						<div class="col-3">
+							<img class="img-responsive" src="images/tap_nation.jpg">
+						</div>
+						<div class="col-9">
+							<h3>California Dreaming - </h3>
+						</div>
+					</div>
+					<div class="row bg-white" onclick="playMusic('player3')">
+						<div class="col-3">
+							<img class="img-responsive" src="images/tap_nation.jpg">
+						</div>
+						<div class="col-9">
+							<h3>Attention- </h3>
+						</div>
+					</div>
+					<audio controls id="player1" hidden="true">
+						<source src="file/audio/1.mp3" type="audio/mpeg">
+					</audio>
+					<div>
+						<audio controls id="player2" hidden="true">
+							<source src="file/audio/2.mp3" type="audio/mpeg">
+						</audio>
+					</div>
+					<div>
+						<audio controls id="player3" hidden="true">
+							<source src="file/audio/3.mp3" type="audio/mpeg">
+						</audio>
+					</div>
+				</div>
+				<div class="col-6" align="center">
+					<img id="image-disk" src="images/disk.png" width="50%" class="">
+					<div class="controls">
+						<button id="play" onclick="playMusic()">Play</button>			
+						<button id="pause" onclick="pauseMusic()">Pause</button>
+						<button id="stop" onclick="stopMusic()">Stop</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			
+		</footer>
+	</div>
+</body>
+</html>
